@@ -1,0 +1,65 @@
+/* establish flex container */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* use flexbox and set header to center with white text and gradient background with sky colors */
+header {
+  background: linear-gradient(to bottom, #87CEEB 0%, #00BFFF 100%);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: -20px;
+  margin-left: -20px;
+  margin-right: -20px;
+  flex-direction: column;
+}
+
+/* set h1 to be larger than h2 */
+header h1 {
+  font-size: 50px;
+}
+
+/* set h2 to be smaller than h1 */
+header h2 {
+  font-size: 30px;
+}
+
+/* set main to be a flex container with a row layout */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+/* set search container to be a flex container with a column layout */
+.search {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 1100px;
+
+  flex: 1;
+}
+
+/* set search button to be lightly below the search input with rounded corners, white text,
+and a sky blue background */
+#search-btn {
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  color: white;
+  background-color: #00BFFF;
+  flex-direction: column;
+}
+
+/* set search input to be a flex container with a column layout */
+#search-input {
+  margin-top: 10px;
+  margin-left: 10px;
+  border-radius: 5px;
+  flex-direction: column;
+}
