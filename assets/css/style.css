@@ -62,11 +62,27 @@ main {
 /* set current to be above forecast */
 .current {
   margin-bottom: 20px;
+  background-color: #87CEEB;
+  color: white;
 }
 
-/* set forecast to be a flex container with a row layout */
+/* set forecast to be a flex container with a column layout */
 .forecast {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* set forecast container to be a flex container with a row layout */
+.forecast-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #87CEEB;
+  color: white;
 }
