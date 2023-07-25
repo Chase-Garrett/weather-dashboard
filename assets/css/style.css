@@ -1,12 +1,18 @@
-/* establish flex container */
+/* establish grid container */
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  display: grid;
+  /* set grid with header on top, search to the left, and main to the right */
+  grid-template-areas:
+    "header header"
+    "aside main";
+    /* set grid template rows and columns */
+   grid-template-rows: 100px 1fr;
+   grid-template-columns: 1fr 3fr;
 }
 
-/* use flexbox and set header to center with white text and gradient background with sky colors */
+/* use grid and set header to center with white text and gradient background with sky colors */
 header {
+  grid-area: header;
   background: linear-gradient(to bottom, #87CEEB 0%, #00BFFF 100%);
   color: white;
   text-align: center;
@@ -14,7 +20,6 @@ header {
   margin-top: -20px;
   margin-left: -20px;
   margin-right: -20px;
-  flex-direction: column;
 }
 
 /* set h1 to be larger than h2 */
@@ -22,27 +27,11 @@ header h1 {
   font-size: 50px;
 }
 
-/* set h2 to be smaller than h1 */
-header h2 {
-  font-size: 30px;
-}
-
-/* set main to be a flex container with a row layout */
-main {
-  flex: 1;
-  display: flex;
-  flex-direction: row;
-}
-
 /* set search container to be a flex container with a column layout */
 .search {
-  display: flex;
-  flex-direction: column;
+  grid-area: aside;
   margin-top: 20px;
   margin-left: 20px;
-  margin-right: 1100px;
-
-  flex: 1;
 }
 
 /* set search button to be lightly below the search input with rounded corners, white text,
@@ -53,7 +42,6 @@ and a sky blue background */
   border-radius: 5px;
   color: white;
   background-color: #00BFFF;
-  flex-direction: column;
 }
 
 /* set search input to be a flex container with a column layout */
@@ -61,5 +49,24 @@ and a sky blue background */
   margin-top: 10px;
   margin-left: 10px;
   border-radius: 5px;
-  flex-direction: column;
+}
+
+/* set main container to be a flex container with a column layout */
+main {
+  grid-area: main;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+/* set current to be above forecast */
+.current {
+  margin-bottom: 20px;
+}
+
+/* set forecast to be a flex container with a row layout */
+.forecast {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
