@@ -111,3 +111,16 @@ main {
   background-color: #87CEEB;
   color: white;
 }
+
+/* set style of clear history button to be white text with a sky blue background */
+.clear-btn {
+  color: white;
+  background-color: #00BFFF;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
