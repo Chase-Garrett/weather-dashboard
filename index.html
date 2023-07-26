@@ -22,18 +22,24 @@
                 <h2>Search for a city:</h2>
                 <input type="text" id="search-input" placeholder="Enter city name">
                 <button id="search-btn">Search</button>
+                <!-- set history div with text for search history -->
+                <div class="history">
+                    <h2>Search History:</h2>
+                    <ul id="search-history">
+                    </ul>
+                </div>
             </div>
         </aside>
         <main>
             <!-- set current div with text for current weather display -->
             <div class="current">
-                <h2>Current Weather:</h2>
+                <h2>Current Weather</h2>
                 <div class="current-container">
                     <div class="current-city">
-                        <h3>City Name</h3>
-                        <p>Temperature: </p>
-                        <p>Humidity: </p>
-                        <p>Wind Speed: </p>
+                        <h3 id="city-name">City Name: </h3>
+                        <p id="temperature">Temperature: </p>
+                        <p id="humidity">Humidity: </p>
+                        <p id="wind-speed">Wind Speed: </p>
                     </div>
                 </div>
             </div>
@@ -41,40 +47,46 @@
             <div class="forecast">
                 <h2>5-Day Forecast:</h2>
                 <div class="forecast-container">
-                    <div class="forecast-day">
-                        <h3>Day 1</h3>
-                        <p>Temp: </p>
-                        <p>Humidity: </p>
-                        <p>Wind Speed: </p>
+                    <div class="forecast-day1 forecast-day">
+                        <h3 id="day1">Day 1</h3>
+                        <p id="temp1">Temp: </p>
+                        <p id="humidity1">Humidity: </p>
+                        <p id="wind1">Wind Speed: </p>
                     </div>
-                    <div class="forecast-day">
-                        <h3>Day 2</h3>
-                        <p>Temp: </p>
-                        <p>Humidity: </p>
-                        <p>Wind Speed: </p>
+                    <div class="forecast-day2 forecast-day">
+                        <h3 id="day2">Day 2</h3>
+                        <p id="temp2">Temp: </p>
+                        <p id="humidity2">Humidity: </p>
+                        <p id="wind2">Wind Speed: </p>
                     </div>
-                    <div class="forecast-day">
-                        <h3>Day 3</h3>
-                        <p>Temp: </p>
-                        <p>Humidity: </p>
-                        <p>Wind Speed: </p>
+                    <div class="forecast-day3 forecast-day">
+                        <h3 id="day3">Day 3</h3>
+                        <p id="temp3">Temp: </p>
+                        <p id="humidity3">Humidity: </p>
+                        <p id="wind3">Wind Speed: </p>
                     </div>
-                    <div class="forecast-day">
-                        <h3>Day 4</h3>
-                        <p>Temp: </p>
-                        <p>Humidity: </p>
-                        <p>Wind Speed: </p>
+                    <div class="forecast-day4 forecast-day">
+                        <h3 id="day4">Day 4</h3>
+                        <p id="temp4">Temp: </p>
+                        <p id="humidity4">Humidity: </p>
+                        <p id="wind4">Wind Speed: </p>
                     </div>
-                    <div class="forecast-day">
-                        <h3>Day 5</h3>
-                        <p>Temp: </p>
-                        <p>Humidity: </p>
-                        <p>Wind Speed: </p>
+                    <div class="forecast-day5 forecast-day">
+                        <h3 id="day5">Day 5</h3>
+                        <p id="temp5">Temp: </p>
+                        <p id="humidity5">Humidity: </p>
+                        <p id="wind5">Wind Speed: </p>
                     </div>
                 </div>
             </div>
         </main>
     </div>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script
+      src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+      integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+      crossorigin="anonymous"
+  ></script>
+  <script src="assets/js/script.js"></script>
 </body>
 </html>

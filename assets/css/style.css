@@ -5,9 +5,9 @@
   grid-template-areas:
     "header header"
     "aside main";
-    /* set grid template rows and columns */
-   grid-template-rows: 100px 1fr;
-   grid-template-columns: 1fr 3fr;
+  /* set grid template rows and columns */
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: 1fr 3fr;
 }
 
 /* use grid and set header to center with white text and gradient background with sky colors */
@@ -29,6 +29,8 @@ header h1 {
 
 /* set search container to be a flex container with a column layout */
 .search {
+  display: flex;
+  flex-direction: column;
   grid-area: aside;
   margin-top: 20px;
   margin-left: 20px;
@@ -42,6 +44,8 @@ and a sky blue background */
   border-radius: 5px;
   color: white;
   background-color: #00BFFF;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 /* set search input to be a flex container with a column layout */
@@ -64,6 +68,7 @@ main {
   margin-bottom: 20px;
   background-color: #87CEEB;
   color: white;
+  border-radius: 5px;
 }
 
 /* set forecast to be a flex container with a column layout */
@@ -74,7 +79,7 @@ main {
 }
 
 /* set forecast container to be a flex container with a row layout */
-.forecast-container {
+.forecast-day {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
