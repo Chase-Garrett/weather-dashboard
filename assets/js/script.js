@@ -3,44 +3,77 @@
 // in the html.
 $(function () {
     // add openweather api key
-    var key = "";
+    var key = "333d2f1012be3d011cc0b4794245857e";
 
     // displayWeather function
     function displayWeather(response) {
-        // get city name
-        var city = response.name;
-        // get current date using day.js
-        var date = dayjs().format("MM/DD/YYYY");
-        // get weather icon
-        var icon = response.weather[0].icon;
-        // get weather icon url
+        // get current weather data
+        var current = response.list[0];
+        // get current weather icon
+        var icon = current.weather[0].icon;
+        // get current weather icon url
         var iconUrl = "https://openweathermap.org/img/w/" + icon + ".png";
-        // get temperature
-        var temp = response.main.temp;
-        // get humidity
-        var humidity = response.main.humidity;
-        // get wind speed
-        var windSpeed = response.wind.speed;
-        // display city name and date
-        $("#city-name").text(city + " (" + date + ")");
-        // display weather icon after city name and date
+        // get current weather date using dayjs
+        var date = dayjs().format("M/D/YYYY");
+        // get current weather city
+        var city = response.city.name;
+        // get current weather temperature
+        var temp = current.main.temp;
+        // get current weather humidity
+        var humidity = current.main.humidity;
+        // get current weather wind speed
+        var wind = current.wind.speed;
+        // display city, date, and icon
+        $("#city-name").text(city + " " + date + " ");
         $("#city-name").append("<img src='" + iconUrl + "'>");
         // display temperature
-        $("#temperature").text("Temperature: " + temp + " °F");
+        $("#temp").text("Temperature: " + temp + " °F");
         // display humidity
         $("#humidity").text("Humidity: " + humidity + "%");
         // display wind speed
-        $("#wind-speed").text("Wind Speed: " + windSpeed + " MPH");
+        $("#wind-speed").text("Wind Speed: " + wind + " MPH");
+
+        // update five day forecast
+        // get forecast array
+        var forecast = response.list;
+        // set day counter
+        var j = 1;
+        // loop through forecast array
+        for (var i = 0; i < forecast.length; i+=8) {
+            // get forecast date for each day using dayjs
+            var forecastDate = dayjs().add(j, "day").format("M/D/YYYY");
+            // get forecast icon
+            var forecastIcon = forecast[i].weather[0].icon;
+            // get forecast icon url
+            var forecastIconUrl = "https://openweathermap.org/img/w/" + forecastIcon + ".png";
+            // get forecast temperature
+            var forecastTemp = forecast[i].main.temp;
+            // get forecast humidity
+            var forecastHumidity = forecast[i].main.humidity;
+            // get forecast wind speed
+            var forecastWind = forecast[i].wind.speed;
+            // display forecast date
+            $("#day" + j).text(forecastDate);
+            // display forecast icon
+            $("#day" + j).append("<img src='" + forecastIconUrl + "'>");
+            // display forecast temperature
+            $("#temp" + j).text("Temp: " + forecastTemp + " °F");
+            // display forecast humidity
+            $("#humidity" + j).text("Humidity: " + forecastHumidity + "%");
+            // display forecast wind speed
+            $("#wind" + j).text("Wind Speed: " + forecastWind + " MPH");
+            // increment day counter
+            j++;
+        }
     }
 
     // getWeather function
     function getWeather(city) {
         // call openweather api
         $.ajax({
-            url: "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + key + "&units=imperial",
+            url: "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + key + "&units=imperial",
             method: "GET"
         }).then(function (response) {
-            console.log(response);
             // call displayWeather function
             displayWeather(response);
         });
