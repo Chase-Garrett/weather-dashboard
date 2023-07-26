@@ -18,7 +18,19 @@ $(function () {
         }
     }
 
-    
+    // add button to clear search history
+    var clearBtn = $("<button>");
+    clearBtn.addClass("clear-btn");
+    clearBtn.text("Clear History");
+    $("#search-history").append(clearBtn);
+
+    // clear button event listener
+    $(".clear-btn").on("click", function () {
+        // clear search history
+        localStorage.clear();
+        // reload page
+        location.reload();
+    });
 
 
     // load search history to local storage
