@@ -5,6 +5,42 @@ $(function () {
     // add openweather api key
     var key = "333d2f1012be3d011cc0b4794245857e";
 
+    // function to save search history to local storage
+    function saveSearchHistory(city) {
+        // load search history to local storage
+        var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+        // check if city is already in search history
+        if (searchHistory.indexOf(city) === -1) {
+            // add city to search history
+            searchHistory.push(city);
+            // save search history to local storage
+            localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+        }
+    }
+
+    // add button to clear search history
+    var clearBtn = $("<button>");
+    clearBtn.addClass("clear-btn");
+    clearBtn.text("Clear History");
+    $("#search-history").append(clearBtn);
+
+    // clear button event listener
+    $(".clear-btn").on("click", function () {
+        // clear search history
+        localStorage.clear();
+        // reload page
+        location.reload();
+    });
+
+
+    // load search history to local storage
+    var searchHistory = JSON.parse(localStorage.getItem("searchHistory")) || [];
+    // loop through search history
+    for (var i = 0; i < searchHistory.length; i++) {
+        // add city to search history
+        $("#search-history").append("<li>" + searchHistory[i] + "</li>");
+    }
+
     // currentWeather function
     function currentWeather(response) {
         // get current date using dayjs
@@ -97,6 +133,37 @@ $(function () {
         $("#search-input").val("");
         // add city to search history
         $("#search-history").append("<li>" + city + "</li>");
+        // call function to save search history to local storage
+        saveSearchHistory(city);
+        // call getWeather function
+        getWeather(city);
+    });
+
+    // add keydown event listener to search input
+    $("#search-input").on("keydown", function (event) {
+        // check if enter key was pressed
+        if (event.keyCode === 13) {
+            // get user input
+            var city = $("#search-input").val();
+            // clear search input
+            $("#search-input").val("");
+            // add city to search history
+            $("#search-history").append("<li>" + city + "</li>");
+            // call function to save search history to local storage
+            saveSearchHistory(city);
+            // call currentWeather function
+            getWeather(city);
+            // call getWeather function
+            getWeather(city);
+        }
+    });
+
+    // add event listener to search history
+    $("#search-history").on("click", "li", function () {
+        // get user input
+        var city = $(this).text();
+        // call currentWeather function
+        getWeather(city);
         // call getWeather function
         getWeather(city);
     });
