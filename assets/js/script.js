@@ -23,18 +23,14 @@ $(function () {
         var windSpeed = response.wind.speed;
         // display city name and date
         $("#city-name").text(city + " (" + date + ")");
-        // create img element for weather icon
-        $("<img>").attr("id", "weather-icon");
-        // display weather icon
-        $("#weather-icon").attr("src", iconUrl);
+        // display weather icon after city name and date
+        $("#city-name").append("<img src='" + iconUrl + "'>");
         // display temperature
         $("#temperature").text("Temperature: " + temp + " °F");
         // display humidity
         $("#humidity").text("Humidity: " + humidity + "%");
         // display wind speed
         $("#wind-speed").text("Wind Speed: " + windSpeed + " MPH");
-        // append weather icon to city name
-        $("#city-name").append($("#weather-icon"));
     }
 
     // getWeather function

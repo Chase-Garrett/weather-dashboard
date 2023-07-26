@@ -5,9 +5,9 @@
   grid-template-areas:
     "header header"
     "aside main";
-    /* set grid template rows and columns */
-   grid-template-rows: 100px 1fr;
-   grid-template-columns: 1fr 3fr;
+  /* set grid template rows and columns */
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: 1fr 3fr;
 }
 
 /* use grid and set header to center with white text and gradient background with sky colors */
