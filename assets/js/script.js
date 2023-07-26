@@ -53,6 +53,8 @@ $(function () {
         var city = $("#search-input").val();
         // clear search input
         $("#search-input").val("");
+        // add city to search history
+        $("#search-history").append("<li>" + city + "</li>");
         // call getWeather function
         getWeather(city);
     });
