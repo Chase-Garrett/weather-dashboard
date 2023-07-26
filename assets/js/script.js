@@ -5,34 +5,35 @@ $(function () {
     // add openweather api key
     var key = "333d2f1012be3d011cc0b4794245857e";
 
+    // currentWeather function
+    function currentWeather(response) {
+        // get current date using dayjs
+        var currentDate = dayjs().format("M/D/YYYY");
+        // get current icon
+        var currentIcon = response.weather[0].icon;
+        // get current icon url
+        var currentIconUrl = "https://openweathermap.org/img/w/" + currentIcon + ".png";
+        // get current temperature
+        var currentTemp = response.main.temp;
+        // get current humidity
+        var currentHumidity = response.main.humidity;
+        // get current wind speed
+        var currentWind = response.wind.speed;
+        
+        // display current date
+        $("#city-name").text(response.name + " " + currentDate );
+        // display current icon
+        $("#city-name").append("<img src='" + currentIconUrl + "'>");
+        // display current temperature
+        $("#temperature").text("Temperature: " + currentTemp + " °F");
+        // display current humidity
+        $("#humidity").text("Humidity: " + currentHumidity + "%");
+        // display current wind speed
+        $("#wind-speed").text("Wind Speed: " + currentWind + " MPH");
+    }
+
     // displayWeather function
     function displayWeather(response) {
-        // get current weather data
-        var current = response.list[0];
-        // get current weather icon
-        var icon = current.weather[0].icon;
-        // get current weather icon url
-        var iconUrl = "https://openweathermap.org/img/w/" + icon + ".png";
-        // get current weather date using dayjs
-        var date = dayjs().format("M/D/YYYY");
-        // get current weather city
-        var city = response.city.name;
-        // get current weather temperature
-        var temp = current.main.temp;
-        // get current weather humidity
-        var humidity = current.main.humidity;
-        // get current weather wind speed
-        var wind = current.wind.speed;
-        // display city, date, and icon
-        $("#city-name").text(city + " " + date + " ");
-        $("#city-name").append("<img src='" + iconUrl + "'>");
-        // display temperature
-        $("#temp").text("Temperature: " + temp + " °F");
-        // display humidity
-        $("#humidity").text("Humidity: " + humidity + "%");
-        // display wind speed
-        $("#wind-speed").text("Wind Speed: " + wind + " MPH");
-
         // update five day forecast
         // get forecast array
         var forecast = response.list;
@@ -69,6 +70,14 @@ $(function () {
 
     // getWeather function
     function getWeather(city) {
+        // call openweather api
+        $.ajax({
+            url: "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + key + "&units=imperial",
+            method: "GET"
+        }).then(function (response) {
+            // call currentWeather function
+            currentWeather(response);
+        });
         // call openweather api
         $.ajax({
             url: "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + key + "&units=imperial",
