@@ -91,3 +91,23 @@ main {
   background-color: #87CEEB;
   color: white;
 }
+
+/* set search history to not display bullet points */
+#search-history {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+/* set search history items to be a flex container with a row layout */
+#search-history li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #87CEEB;
+  color: white;
+}
